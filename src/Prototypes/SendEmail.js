@@ -57,15 +57,18 @@ export const SendEmail = () => {
     </form> 
 
       <div className="center">
-        <Form>
+        <Form ref={form} onSubmit={sendEmail}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>From</Form.Label>
-            <Form.Control type="text" placeholder="Enter your name" />
+            <Form.Control type="text" placeholder="Enter your name" name="user_name" />
           </Form.Group>
-
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>To</Form.Label>
+            <Form.Control type="text" placeholder="Enter Receiver name"  name="to_name"/>
+          </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Receiver email address</Form.Label>
-            <Form.Control type="email" placeholder="Enter email" />
+            <Form.Control type="email" placeholder="Enter email" name="user_email"  />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -74,6 +77,7 @@ export const SendEmail = () => {
               as="textarea"
               rows={3}
               type="text"
+              name="message"
               placeholder="Enter body"
             />
           </Form.Group>
