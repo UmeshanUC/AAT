@@ -46,7 +46,6 @@ function ImportCsv() {
   return (
     <div>
       <NavBar />
-
       <div style={{ textAlign: "center" }}>
         <h1>UPLOAD FILE</h1>
         <form>
@@ -56,7 +55,6 @@ function ImportCsv() {
             accept={".csv"}
             onChange={handleOnChange}
           />
-
           <button
             onClick={(e) => {
               handleOnSubmit(e);

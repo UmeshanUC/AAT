@@ -4,6 +4,8 @@ import ExcelDataGrid from './Prototypes/ExcelDataGrid';
 import Login from './Prototypes/Login';
 import HomePage from './Prototypes/HomePage';
 import { ImportCsv } from './Prototypes/ImportCsv';
+import { SendEmail } from './Prototypes/SendEmail';
+import { Statistic } from './Prototypes/Statistic';
 
 function App() {
 	return (
@@ -15,6 +17,8 @@ function App() {
 					<Route path='/login' element={<Login/>} />
 					<Route path='/upload' element={<ImportCsv/>} />
 					<Route path='/home' element={<HomePage/>} />
+					<Route path='/email' element={<SendEmail/>} />
+					<Route path='/statistic' element={<Statistic/>} />
 				</Routes>
 			</BrowserRouter>
 		</div>
