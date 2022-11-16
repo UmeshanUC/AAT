@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 
 import "../styles/Login.css";
 
 function App() {
+
   // React States
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -12,17 +14,17 @@ function App() {
   const database = [
     {
       username: "user1",
-      password: "pass1"
+      password: "pass1",
     },
     {
       username: "user2",
-      password: "pass2"
-    }
+      password: "pass2",
+    },
   ];
 
   const errors = {
     uname: "invalid username",
-    pass: "invalid password"
+    pass: "invalid password",
   };
 
   const handleSubmit = (event) => {
@@ -75,11 +77,17 @@ function App() {
     </div>
   );
 
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `home`; 
+    navigate(path);
+  }
+
   return (
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        {isSubmitted ? {routeChange}: renderForm}
       </div>
     </div>
   );

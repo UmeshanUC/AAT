@@ -10,10 +10,11 @@ function App() {
 		<div>
 			<BrowserRouter>
 				<Routes>
-					<Route path='/' element={<HomePage />} />
-					<Route path='/prot1' element={<ExcelDataGrid />} />
-					<Route path='/Login' element={<Login/>} />
-					<Route path='/prot2' element={<ImportCsv />} />
+					<Route path='/' element={<HomePage/>} />
+					<Route path='/dataPrev' element={<ExcelDataGrid/>} />
+					<Route path='/login' element={<Login/>} />
+					<Route path='/upload' element={<ImportCsv/>} />
+					<Route path='/home' element={<HomePage/>} />
 				</Routes>
 			</BrowserRouter>
 		</div>

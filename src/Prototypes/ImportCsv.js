@@ -1,89 +1,95 @@
 import React, { useState } from "react";
+import { NavBar } from "./NavBar";
+import Table from 'react-bootstrap/Table';
 
 function ImportCsv() {
-    const [file, setFile] = useState();
-    const [array, setArray] = useState([]);
+  const [file, setFile] = useState();
+  const [array, setArray] = useState([]);
 
-    const fileReader = new FileReader();
+  const fileReader = new FileReader();
 
-    const handleOnChange = (e) => {
+  const handleOnChange = (e) => {
     setFile(e.target.files[0]);
-    };
+  };
 
-    const csvFileToArray = string => {
+  const csvFileToArray = (string) => {
     const csvHeader = string.slice(0, string.indexOf("\n")).split(",");
     const csvRows = string.slice(string.indexOf("\n") + 1).split("\n");
 
-    const array = csvRows.map(i => {
-        const values = i.split(",");
-        const obj = csvHeader.reduce((object, header, index) => {
+    const array = csvRows.map((i) => {
+      const values = i.split(",");
+      const obj = csvHeader.reduce((object, header, index) => {
         object[header] = values[index];
         return object;
-        }, {});
-        return obj;
+      }, {});
+      return obj;
     });
 
     setArray(array);
-    };
+  };
 
-    const handleOnSubmit = (e) => {
+  const handleOnSubmit = (e) => {
     e.preventDefault();
 
     if (file) {
-        fileReader.onload = function (event) {
+      fileReader.onload = function (event) {
         const text = event.target.result;
         csvFileToArray(text);
-        };
+      };
 
-        fileReader.readAsText(file);
+      fileReader.readAsText(file);
     }
-    };
+  };
 
-    const headerKeys = Object.keys(Object.assign({}, ...array));
+  const headerKeys = Object.keys(Object.assign({}, ...array));
 
-    return (
-    <div style={{ textAlign: "center" }}>
+  return (
+    <div>
+      <NavBar />
+
+      <div style={{ textAlign: "center" }}>
         <h1>UPLOAD FILE</h1>
         <form>
-        <input
+          <input
             type={"file"}
             id={"csvFileInput"}
             accept={".csv"}
             onChange={handleOnChange}
-        />
+          />
 
-        <button
+          <button
             onClick={(e) => {
-            handleOnSubmit(e);
+              handleOnSubmit(e);
             }}
-        >
+          >
             IMPORT CSV
-        </button>
+          </button>
         </form>
 
         <br />
 
-        <table>
-        <thead>
+        <Table striped bordered hover>
+          <thead>
             <tr key={"header"}>
-            {headerKeys.map((key) => (
+              {headerKeys.map((key) => (
                 <th>{key}</th>
-            ))}
+              ))}
             </tr>
-        </thead>
+          </thead>
 
-        <tbody>
+          <tbody>
             {array.map((item) => (
-            <tr key={item.id}>
+              <tr key={item.id}>
                 {Object.values(item).map((val) => (
-                <td>{val}</td>
+                  <td>{val}</td>
                 ))}
-            </tr>
+              </tr>
             ))}
-        </tbody>
-        </table>
+          </tbody>
+        </Table>
+      </div>
     </div>
-    );
+  );
 }
 
-export {ImportCsv};
+export { ImportCsv };
