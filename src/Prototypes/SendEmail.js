@@ -12,7 +12,7 @@ export const SendEmail = () => {
     e.preventDefault();
 
     emailjs
-      .sendForm("gmail", "service_wlc3w1b", form.current, "d4PEAo9SHTdR60JEl")
+      .sendForm("service_wlc3w1b", "template_21ccyz3", form.current, "d4PEAo9SHTdR60JEl")
       .then(
         (result) => {
           console.log(result.text);
@@ -31,13 +31,18 @@ export const SendEmail = () => {
         <h3 className="centerh1">Send Email</h3>
       </div>
 
-      {/* <form ref={form} onSubmit={sendEmail}>
+       <form ref={form} onSubmit={sendEmail}>
      <div>
-     <label>Name</label>
+     <label>From</label>
       <input type="text" name="user_name" />
      </div>
       
      <div>
+     <label>To</label>
+      <input type="text" name="to_name" />
+     </div>
+
+    <div>
      <label>Email</label>
       <input type="email" name="user_email" />
      </div>
@@ -49,7 +54,7 @@ export const SendEmail = () => {
      </div>
      
      
-    </form> */}
+    </form> 
 
       <div className="center">
         <Form>
