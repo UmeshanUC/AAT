@@ -30,32 +30,6 @@ export const SendEmail = () => {
       <div>
         <h3 className="centerh1">Send Email</h3>
       </div>
-
-       <form ref={form} onSubmit={sendEmail}>
-     <div>
-     <label>From</label>
-      <input type="text" name="user_name" />
-     </div>
-      
-     <div>
-     <label>To</label>
-      <input type="text" name="to_name" />
-     </div>
-
-    <div>
-     <label>Email</label>
-      <input type="email" name="user_email" />
-     </div>
-
-    <div>
-     <label>Message</label>
-      <textarea name="message" />
-      <input type="submit" value="Send" />
-     </div>
-     
-     
-    </form> 
-
       <div className="center">
         <Form ref={form} onSubmit={sendEmail}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
