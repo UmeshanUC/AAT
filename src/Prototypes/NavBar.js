@@ -16,6 +16,7 @@ function NavBar() {
             <Nav.Link href="dataPrev">Data</Nav.Link>
             <Nav.Link href="email">E-Mail</Nav.Link>
             <Nav.Link href="statistic">Statistic</Nav.Link>
+            <Nav.Link href="uploadAttendance">Upload Attendance</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="login">Log out</Nav.Link>

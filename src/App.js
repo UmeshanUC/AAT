@@ -6,6 +6,7 @@ import HomePage from './Prototypes/HomePage';
 import { ImportCsv } from './Prototypes/ImportCsv';
 import { SendEmail } from './Prototypes/SendEmail';
 import { Statistic } from './Prototypes/Statistic';
+import { UploadAttendance } from './Prototypes/UploadAttendance';
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<Route path='/home' element={<HomePage/>} />
 					<Route path='/email' element={<SendEmail/>} />
 					<Route path='/statistic' element={<Statistic/>} />
+					<Route path='/uploadAttendance' element={<UploadAttendance/>} />
 				</Routes>
 			</BrowserRouter>
 		</div>
