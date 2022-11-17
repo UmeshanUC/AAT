@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { NavBar } from "./NavBar";
-import Table from 'react-bootstrap/Table';
+import Table from "react-bootstrap/Table";
+import "../styles/UploadAttendance.css";
 
 function ImportCsv() {
   const [file, setFile] = useState();
@@ -47,22 +48,47 @@ function ImportCsv() {
     <div>
       <NavBar />
       <div style={{ textAlign: "center" }}>
-        <h1>UPLOAD FILE</h1>
-        <form>
-          <input
-            type={"file"}
-            id={"csvFileInput"}
-            accept={".csv"}
-            onChange={handleOnChange}
-          />
-          <button
-            onClick={(e) => {
-              handleOnSubmit(e);
-            }}
-          >
-            IMPORT CSV
-          </button>
-        </form>
+        <h2>Create New Module</h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <div class="row">
+                <h5> Add Module</h5>
+              </div>
+              <div class="row">
+                <div class="col-sm" className="moduleInput">
+                  <input type="text" class="form-control" />
+                </div>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="row">
+                <h5>UPLOAD FILE</h5>
+              </div>
+              <div class="row">
+                <form>
+                  <input
+                    type={"file"}
+                    id={"csvFileInput"}
+                    accept={".csv"}
+                    onChange={handleOnChange}
+                  />
+                  <button
+                    onClick={(e) => {
+                      handleOnSubmit(e);
+                    }}
+                  >
+                    IMPORT CSV
+                  </button>
+                </form>
+              </div>
+            </div>
+            <div >
+            <button type="button" class="btn btn-primary">Add</button>
+              </div>
+          </div>
+
+        </div>
 
         <br />
 

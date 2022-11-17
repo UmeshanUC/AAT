@@ -12,7 +12,7 @@ function NavBar() {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="home">Home</Nav.Link>
-            <Nav.Link href="upload">Upload</Nav.Link>
+            <Nav.Link href="upload">Create module</Nav.Link>
             <Nav.Link href="dataPrev">Data</Nav.Link>
             <Nav.Link href="email">E-Mail</Nav.Link>
             <Nav.Link href="statistic">Statistic</Nav.Link>
