@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import { NavBar } from "./NavBar";
 import Table from "react-bootstrap/Table";
 import "../styles/UploadAttendance.css";
+import { globalData } from './globle';
 
 function ImportCsv() {
   const [file, setFile] = useState();
   const [array, setArray] = useState([]);
+
+  useEffect(() => {
+      
+    globalData.testArr = array;
+}, [array])
 
   const fileReader = new FileReader();
 
@@ -44,6 +50,8 @@ function ImportCsv() {
 
   const headerKeys = Object.keys(Object.assign({}, ...array));
 
+  console.log(globalData.testArr);
+  
   return (
     <div>
       <NavBar />

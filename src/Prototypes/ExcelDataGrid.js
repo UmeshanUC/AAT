@@ -128,7 +128,7 @@ export default function ExcelDataGrid() {
 
       <div className="m-5">
         <h1 className="display-6 mb-4 fe-normal ">
-          Attendance of EE6211 on 10/12/2022
+          Attendance of EE6211 on 17/11/2022
         </h1>
         <div>
         <Box sx={{ height: 400, width: "100%" }}>

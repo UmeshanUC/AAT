@@ -13,10 +13,12 @@ function NavBar() {
           <Nav className="me-auto">
             <Nav.Link href="home">Home</Nav.Link>
             <Nav.Link href="upload">Create module</Nav.Link>
-            <Nav.Link href="dataPrev">Data</Nav.Link>
-            <Nav.Link href="email">E-Mail</Nav.Link>
-            <Nav.Link href="statistic">Statistic</Nav.Link>
             <Nav.Link href="uploadAttendance">Upload Attendance</Nav.Link>
+            <Nav.Link href="dataPrev">Data</Nav.Link>
+        
+            <Nav.Link href="statistic">Statistic</Nav.Link>
+            <Nav.Link href="email">E-Mail</Nav.Link>
+          
           </Nav>
           <Nav>
             <Nav.Link href="login">Log out</Nav.Link>

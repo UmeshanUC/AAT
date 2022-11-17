@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useState } from "react";
 import { NavBar } from "./NavBar";
+import { PieChart } from "react-minimal-pie-chart";
 
 const Statistic = () => {
   const [count, setCount] = useState(0);
@@ -27,7 +28,17 @@ const Statistic = () => {
             Added new record
           </Button>
         </div>
+        <div className="d-flex flex-column align-items-center justify-content-center m-5">
+          <div className="w-25 h-25">
+            <PieChart
+                data={[
+                  { title: 'Present', value: count, color: '#E38627' },
+                  { title: 'Absent', value: 75-count, color: '#C13C37' },
+                ]}
+                />;
+          </div>
       </div>
+    </div>
     </div>
   );
 };

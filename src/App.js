@@ -7,7 +7,7 @@ import { ImportCsv } from './Prototypes/ImportCsv';
 import { SendEmail } from './Prototypes/SendEmail';
 import { Statistic } from './Prototypes/Statistic';
 import { UploadAttendance } from './Prototypes/UploadAttendance';
-
+import { CsvReadArray } from './Prototypes/CsvReadArray';
 function App() {
 	return (
 		<div>
@@ -21,6 +21,7 @@ function App() {
 					<Route path='/email' element={<SendEmail/>} />
 					<Route path='/statistic' element={<Statistic/>} />
 					<Route path='/uploadAttendance' element={<UploadAttendance/>} />
+					<Route path='/csvReadArray' element={<CsvReadArray/>} />
 				</Routes>
 			</BrowserRouter>
 		</div>

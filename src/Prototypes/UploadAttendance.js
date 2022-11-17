@@ -1,23 +1,77 @@
 import { Button } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { NavBar } from "./NavBar";
 import "../styles/UploadAttendance.css";
+import { globalData } from './globle';
 
 const UploadAttendance = () => {
   const [count, setCount] = useState(0);
+  const [array, setData] = useState([]);
+  useEffect(() => {
+      
+      globalData.testArr =array ;
+}, [array])
+ console.log(globalData.testArr);
 
- const student = [
-    {product: 'Bamboo Watch', lastYearSale: 51, thisYearSale: 40, lastYearProfit: 54406, thisYearProfit: 43342},
-    {product: 'Black Watch', lastYearSale: 83, thisYearSale: 9, lastYearProfit: 423132, thisYearProfit: 312122},
-    {product: 'Blue Band', lastYearSale: 38, thisYearSale: 5, lastYearProfit: 12321, thisYearProfit: 8500},
-    {product: 'Blue T-Shirt', lastYearSale: 49, thisYearSale: 22, lastYearProfit: 745232, thisYearProfit: 65323},
-    {product: 'Brown Purse', lastYearSale: 17, thisYearSale: 79, lastYearProfit: 643242, thisYearProfit: 500332},
-    {product: 'Chakra Bracelet', lastYearSale: 52, thisYearSale:  65, lastYearProfit: 421132, thisYearProfit: 150005},
-    {product: 'Galaxy Earrings', lastYearSale: 82, thisYearSale: 12, lastYearProfit: 131211, thisYearProfit: 100214},
-    {product: 'Game Controller', lastYearSale: 44, thisYearSale: 45, lastYearProfit: 66442, thisYearProfit: 53322},
-    {product: 'Gaming Set', lastYearSale: 90, thisYearSale: 56, lastYearProfit: 765442, thisYearProfit: 296232},
-    {product: 'Gold Phone Case', lastYearSale: 75, thisYearSale: 54, lastYearProfit: 21212, thisYearProfit: 12533}
-];
+ var stream = [];
+
+ const handleSend = () => {
+     alert();
+ };
+ 
+ document.addEventListener('DOMContentLoaded', () => {
+     GetEl('btn').addEventListener('click', handleSend);
+     GetEl('connect').addEventListener('click', handleConnect);
+ });
+ 
+ const GetEl = (id) => {
+     return document.getElementById(id);
+ };
+ 
+ const handleConnect = () => {
+     (async () => {
+         const port = await navigator.serial.requestPort();
+         await port.open({ baudRate: 9600 });
+         ListenToSerial(port);
+     })();
+ };
+ 
+ const ListenToSerial = (port) => {
+     (async () => {
+         const reader = port.readable.getReader();
+         // const textDecoder = new TextDecoderStream();
+         // const readableStreamClosed = port.readable.pipeTo(textDecoder.writable);
+         // const reader = textDecoder.readable.getReader();
+ 
+         while (true) {
+             const { value, done } = await reader.read();
+             if (done) {
+                 // Allow the serial port to be closed later.
+                 reader.releaseLock();
+                 break;
+             }
+             // value is a Uint8Array.
+ 
+             if (String(value).includes('10') || String(value).includes('13')) {
+                 console.log(value);
+             }
+             stream.push(value);
+             // AppendLineToCli(stream.join(''));
+         }
+     })();
+ };
+ 
+ const AppendLineToCli = (value) => {
+     const node = document.createElement('div');
+     const textnode = document.createTextNode(value);
+     node.appendChild(textnode);
+     node.classList.add('cli-line');
+     const cli = GetEl('cli');
+     cli.appendChild(node);
+     cli.scrollBy(0, 100);
+ };
+
+
 
   return (
     <div>
@@ -47,7 +101,7 @@ const UploadAttendance = () => {
         <div class="container">
           <div class="row">
             <div class="col-sm"><h4><b>Date :</b> 17/11/2022</h4></div>
-            <div class="col-sm"><h4><b>Module:</b> EE6302</h4></div>
+            <div class="col-sm"><h4><b>Module:</b> EE6211</h4></div>
             <div class="col-sm"><h4><b>Batch:</b> 2018/2019</h4></div>
             {/* <div class="col-sm">One of three columns</div>
             <div class="col-sm">One of three columns</div>
@@ -60,14 +114,21 @@ const UploadAttendance = () => {
         <table class="table">
           <thead>
             <tr>
-              <th scope="col">No.</th>
-              <th scope="col">Student Id</th>
+              <th scope="col">Student ReNo.</th>
+              <th scope="col">First Name</th>
+              <th scope="col">Last Name</th>
+              <th scope="col">Full Name</th>
               <th scope="col">Attendance</th>
-              <th scope="col">Name</th>
             </tr>
           </thead>
           <tbody>
-            <tr></tr>
+          {array.map((item) => (
+              <tr key={item.id}>
+                {Object.values(item).map((val) => (
+                  <td>{val}</td>
+                ))}
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
