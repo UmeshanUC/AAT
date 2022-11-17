@@ -79,7 +79,7 @@ function App() {
 
   let navigate = useNavigate(); 
   const routeChange = () =>{ 
-    let path = `home`; 
+    let path = `/home`; 
     navigate(path);
   }
 
@@ -87,7 +87,7 @@ function App() {
     <div className="app">
       <div className="login-form">
         <div className="title">Sign In</div>
-        {isSubmitted ? {routeChange}: renderForm}
+        {isSubmitted ? routeChange(): renderForm}
       </div>
     </div>
   );
